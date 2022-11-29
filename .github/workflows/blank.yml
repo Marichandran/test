@@ -25,13 +25,13 @@ jobs:
         uses: actions/checkout@v2
       - name: echo vars
         run: 
-            echo "The PR_EVENT is ${{ env.PR.EVENT }}"
+            echo "The PR_EVENT is ${{ env.PR_EVENT }}"
             echo "The PR_URL is ${{ env.PR_URL }}"
             echo "The TOKEN is ${{ env.PR_LABEL }}"
             
       - name: Trigger Jenkins Build with PR Information
         run: |- 
-               curl --location --request POST  ${{ env.JENKINS_URL }}${{ BUILDTOKEN }}   \
+               curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
                       --data-raw '{
                         "action": ${{ env.PR_EVENT }} ,
