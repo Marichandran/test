@@ -30,12 +30,8 @@ jobs:
             echo The TOKEN is ${{ inputs.PR_LABEL }}
             
       - name: Trigger Jenkins Build with PR Information
-        run: |-
-              curl --location --request POST  ${{ inputs.JENKINS_URL }}${{ inputs.BUILDTOKEN }}   \
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                        "action": ${{ inputs.PR_EVENT }} ,
-                        "pull_request": {
-                          "html_url": ${{ inputs.PR_URL }}
-                        }
-                      }'
+        run: 
+            echo ${{ inputs.JENKINS_URL }}${{ inputs.BUILDTOKEN }}
+            echo ${{ inputs.PR_EVENT }}
+            echo ${{ inputs.PR_URL }}
+        
