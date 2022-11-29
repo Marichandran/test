@@ -27,18 +27,18 @@ jobs:
         run: 
             echo "The PR_EVENT is ${{ env.PR.EVENT }}"
             echo "The PR_URL is ${{ env.PR_URL }}"
-            echo "The TOKEN is ${{ PR_LABEL }}"
+            echo "The TOKEN is ${{ env.PR_LABEL }}"
             
       - name: Trigger Jenkins Build with PR Information
         run: |- 
-               curl --location --request POST  ${{ JENKINS_URL }}${{ BUILDTOKEN }}   \
+               curl --location --request POST  ${{ env.JENKINS_URL }}${{ BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
                       --data-raw '{
-                        "action": ${{ PR_EVENT }} ,
+                        "action": ${{ env.PR_EVENT }} ,
                         "pull_request": {
-                          "html_url": ${{ PR_URL }}
+                          "html_url": ${{ env.PR_URL }}
                         },
                         "label": {
-                          "name": ${{ PR_LABEL }}
+                          "name": ${{ env.PR_LABEL }}
                         }                        
                       }'
