@@ -14,7 +14,7 @@ env:
     PR_EVENT: ${{ github.event.action }}
     PR_URL: https://github.com/${{github.repository}}/pull/${{ github.event.pull_request.number }}
     PR_LABEL: ${{ github.event.label.name }}
-    BUILDTOKEN: vmmanager
+    BUILDTOKEN: test_vmmanager
     JENKINS_URL: https://cbjenkins-ba.devtools.intel.com/teams-satg-aee-android-ci/generic-webhook-trigger/invoke?token=
 
 jobs:
