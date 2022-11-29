@@ -14,7 +14,7 @@ env:
     PR_EVENT: ${{ github.event.action }}
     PR_URL: https://github.com/${{github.repository}}/pull/${{ github.event.pull_request.number }}
     PR_LABEL: ${{ github.event.label.name }}
-    BUILDTOKEN: test_vmmanager
+    BUILDTOKEN: vmmanager
     JENKINS_URL: https://cbjenkins-ba.devtools.intel.com/teams-satg-aee-android-ci/generic-webhook-trigger/invoke?token=
 
 jobs:
@@ -25,21 +25,12 @@ jobs:
         uses: actions/checkout@v2
       - name: echo vars
         run: 
-            echo The PR_EVENT is ${{PR_EVENT}}
-            echo The PR_URL is ${{PR_URL}}
-            echo The TOKEN is ${{PR_LABEL}}
+            echo The PR_EVENT is ${{ inputs.PR_EVENT }}
+            echo The PR_URL is ${{ inputs.PR_URL }}
+            echo The TOKEN is ${{ inputs.PR_LABEL }}
             
       - name: Trigger Jenkins Build with PR Information
-        run: |- 
-               curl --location --request POST  ${{JENKINS_URL}}${{BUILDTOKEN}}   \
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                        "action": ${{PR_EVENT}} ,
-                        "pull_request": {
-                          "html_url": ${{PR_URL}}
-                        },
-                        "label": {
-                          "name": ${{PR_LABEL}}
-                        }                        
-                      }'
-        
+        run: 
+            echo ${{ inputs.JENKINS_URL }}${{ inputs.BUILDTOKEN }}
+            echo ${{ inputs.PR_EVENT }}
+            echo ${{ inputs.PR_URL }}
