@@ -25,9 +25,9 @@ jobs:
         uses: actions/checkout@v2
       - name: echo vars
         run: 
-            echo The PR_EVENT is ${{PR_EVENT}}
-            echo The PR_URL is ${{PR_URL}}
-            echo The TOKEN is ${{PR_LABEL}}
+            echo The PR_EVENT is ${{ PR_EVENT }}
+            echo The PR_URL is ${{ PR_URL }}
+            echo The TOKEN is ${{ PR_LABEL }}
             
       - name: Trigger Jenkins Build with PR Information
 
