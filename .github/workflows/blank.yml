@@ -21,8 +21,7 @@ jobs:
       - name: converting object to json
         env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}       
-          run: |
-            echo $EVENT_CONTEXT
+          run: echo $EVENT_CONTEXT
               
       - name: Trigger Jenkins Build with PR Information
         run: |- 
