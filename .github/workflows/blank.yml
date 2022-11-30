@@ -30,7 +30,7 @@ jobs:
                       --header 'Content-Type: application/json' \
                       --data-raw '{
                         "action": $EVENT_CONTEXT                      
-                        }
+                        }'
                       
         
         
