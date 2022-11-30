@@ -16,8 +16,8 @@ env:
 
 jobs:
   Build:
-    runs-on: self-hosted
-    steps:
+   runs-on: self-hosted
+   steps:
       - name: converting object to json
         env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}       
