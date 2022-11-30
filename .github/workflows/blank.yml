@@ -30,7 +30,7 @@ jobs:
             echo "The TOKEN is ${{ env.PR_LABEL }}"
             
       - name: Trigger Jenkins Build with PR Information
-        run: |- 
+        run: echo "|- 
                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
                       --data-raw '{
@@ -41,4 +41,4 @@ jobs:
                         "label": {
                           "name": ${{ env.PR_LABEL }}
                         }                        
-                      }'
+                      }'"
