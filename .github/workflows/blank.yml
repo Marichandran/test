@@ -11,7 +11,7 @@ on:
     branches: "**"
 
 env:
-    
+    EVENT_CONTEXT: ${{ toJSON(github.event) }}
     BUILDTOKEN: test_vmmanager
     JENKINS_URL: https://cbjenkins-ba.devtools.intel.com/teams-satg-aee-android-ci/generic-webhook-trigger/invoke?token=
 
@@ -24,11 +24,4 @@ jobs:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: |
           echo "$EVENT_CONTEXT"
-      - name: Triggering Jenkins Job
-        run: |- 
-                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                        "action": ${{ EVENT_CONTEXT }}                      
-                        }
         
