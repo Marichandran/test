@@ -1,7 +1,6 @@
 on:
   issues:
-    types: 
-    - closed
+    types: [closed]
     branches: "**"
     
 env:
@@ -20,4 +19,3 @@ jobs:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
       - run: |
           echo "$EVENT_CONTEXT"
-
