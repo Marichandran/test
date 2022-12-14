@@ -11,10 +11,10 @@ env:
 
 
 jobs:
-  Build:
+  If_IssueClosed:
      runs-on: self-hosted
      steps:
-      - name: Trigger Jenkins Build with PR Information
+      - name: Trigger Jenkins VM Manager Merge job
         run: |- 
                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
