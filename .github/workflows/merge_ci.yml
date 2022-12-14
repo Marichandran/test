@@ -26,4 +26,3 @@ jobs:
                       --data-raw '{
                         "action": ${{ env.EVENT_CONTEXT }}                      
                         }'
-
