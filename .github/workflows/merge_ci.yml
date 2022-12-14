@@ -19,9 +19,7 @@ jobs:
           echo "$EVENT_CONTEXT"
       - name: Triggering Jenkins job
         run: |-
-                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
-                      --header 'Content-Type: application/json' \
-                      --data-raw '{
-                        "action": ${{ env.EVENT_CONTEXT }}                      
-                        }'
+          curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
+          --header 'Content-Type: application/json' \
+          --data-raw '{ "action": ${{ env.EVENT_CONTEXT }} }'
 
