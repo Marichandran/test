@@ -5,7 +5,7 @@ on:
     
 env:
     EVENT_CONTEXT: ${{ toJSON(github.event) }}
-    BUILDTOKEN: test_issue
+    BUILDTOKEN: test_merge
     JENKINS_URL: https://cbjenkins-ba.devtools.intel.com/teams-satg-aee-android-ci/generic-webhook-trigger/invoke?token=
 
 jobs:
