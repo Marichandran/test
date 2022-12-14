@@ -16,7 +16,7 @@ jobs:
     - run: |
         echo The PR was merged
     - name: Triggering Jenkins job
-      run: |
+      run: |-
                 curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header "Content-Type: application/json" \
                       --data-raw "${{ env.EVENT_CONTEXT }}"
