@@ -13,7 +13,7 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: |
-          echo The PR was merged
+          echo The Issue was closed
       - name: converting object to json
         env:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
@@ -24,5 +24,5 @@ jobs:
                 curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
                       --data-raw '{
-                        "action": ${{ env.EVENT_CONTEXT }}                      
+                        "action": ${{ EVENT_CONTEXT }}                      
                         }'
