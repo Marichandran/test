@@ -24,6 +24,12 @@ jobs:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: |
           echo "$EVENT_CONTEXT"
+          run: |-
+                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
+                      --header 'Content-Type: application/json' \
+                      --data-raw '{
+                        "action": ${{ env.EVENT_CONTEXT }}                      
+                        }'
 
                       
         
