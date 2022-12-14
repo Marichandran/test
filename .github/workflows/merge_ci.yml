@@ -9,16 +9,17 @@ env:
     BUILDTOKEN: test_vmmanagermerge
     JENKINS_URL: https://cbjenkins-ba.devtools.intel.com/teams-satg-aee-android-ci/generic-webhook-trigger/invoke?token=
 
+
 jobs:
-  if_closed:
-    runs-on: self-hosted
-    steps:
-    - run: |
-        echo The PR was merged
-    - name: Triggering Jenkins job
-      run: |
-                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
-                      --header "Content-Type: application/json" \
-                      --data-raw "${{ env.EVENT_CONTEXT }}"
+  Build:
+     runs-on: self-hosted
+     steps:
+      - name: Trigger Jenkins Build with PR Information
+        run: |- 
+               curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
+                      --header 'Content-Type: application/json' \
+                      --data-raw '{
+                        "action": ${{ github.event }}                      
+                        }'
                                 
 
