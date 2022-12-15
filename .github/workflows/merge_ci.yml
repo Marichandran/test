@@ -18,7 +18,6 @@ jobs:
         run: |- 
                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
-                      -d "[${{ env.EVENT_CONTEXT }}]"                     
-                        }'
+                      -d "[${{ env.EVENT_CONTEXT }}]"
                                 
 
