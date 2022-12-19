@@ -19,5 +19,8 @@ jobs:
                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
                       -d "[${{ env.EVENT_CONTEXT }}]"
+      - name: Sleep
+        with:
+          time: 120s
                                 
 
