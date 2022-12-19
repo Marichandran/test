@@ -20,6 +20,7 @@ jobs:
                       --header 'Content-Type: application/json' \
                       -d "[${{ env.EVENT_CONTEXT }}]"
       - name: Sleep
+        uses: juliangruber/sleep-action@v1
         with:
           time: 120s
                                 
