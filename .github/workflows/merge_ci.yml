@@ -16,12 +16,10 @@ jobs:
      steps:
       - name: Trigger Jenkins VM Manager Merge job
         run: |- 
-               curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
+                curl --location --request POST  ${{ env.JENKINS_URL }}${{ env.BUILDTOKEN }}   \
                       --header 'Content-Type: application/json' \
-                      -d "[${{ env.EVENT_CONTEXT }}]"
-      - name: Sleep
-        uses: juliangruber/sleep-action@v1
-        with:
-          time: 120s
+                      --data-raw '{
+                        "action": ${{ env.EVENT_CONTEXT }}                      
+                        }'
                                 
 
